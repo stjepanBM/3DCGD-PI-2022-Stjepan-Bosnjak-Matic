@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +13,10 @@ public class Player : MonoBehaviour
     public float mouseSensitivity = 700f;
 
     public Transform myCameraHead;
-
     private float cameraVerticalRotation;
+
+    public GameObject bullet;
+    public Transform firePosition;
 
     void Start()
     {
@@ -24,7 +27,16 @@ public class Player : MonoBehaviour
     {
         PlayerMovement();
         MouseMovement();
+        Shoot();
+    }
 
+    private void Shoot()
+    {
+        //Checking left mouse button
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(bullet, firePosition.position, firePosition.rotation);
+        }
     }
 
     private void MouseMovement()

@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
 
     public float speed = 12.5f;
 
+    //gravity
+    public Vector3 velocity;
+    public float gravityModifier;
+
     public CharacterController myController;
 
     public float mouseSensitivity = 700f;
@@ -52,8 +56,13 @@ public class Player : MonoBehaviour
 
                     if (hit.collider.CompareTag("WaterLeak"))
                         Instantiate(waterLeak, hit.point, Quaternion.LookRotation(hit.normal));
+
                 }
-            }   
+                if (hit.collider.CompareTag("Enemy"))
+                {
+                    Destroy(hit.collider.gameObject);
+                }
+            }
             else
             {
                 firePosition.LookAt(myCameraHead.position + (myCameraHead.forward * 50f));
@@ -90,5 +99,14 @@ public class Player : MonoBehaviour
         Vector3 movement = x * transform.right + z * transform.forward;
 
         myController.Move(movement * speed * Time.deltaTime);
+
+        velocity.y += Physics.gravity.y * Mathf.Pow(Time.deltaTime, 2) * gravityModifier;
+
+        if (myController.isGrounded)
+        {
+            velocity.y = Physics.gravity.y * Time.deltaTime;
+        }
+
+        myController.Move(velocity);
     }
 }

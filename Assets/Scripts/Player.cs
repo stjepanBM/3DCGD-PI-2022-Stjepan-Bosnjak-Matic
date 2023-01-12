@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    public float speed = 13f;
+    public float speed = 12f;
 
     public CharacterController myController;
 
@@ -23,7 +23,12 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        MouseMovement();
 
+    }
+
+    private void MouseMovement()
+    {
         float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -35,7 +40,6 @@ public class Player : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
         //uses vector3 and converts it to rotation
         myCameraHead.localRotation = Quaternion.Euler(cameraVerticalRotation, 0f, 0f);
-
     }
 
     void PlayerMovement()

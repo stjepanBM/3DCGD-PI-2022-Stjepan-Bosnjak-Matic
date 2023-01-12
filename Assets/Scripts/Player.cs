@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    public float speed = 12f;
+    public float speed = 12.5f;
 
     public CharacterController myController;
 
@@ -18,9 +18,12 @@ public class Player : MonoBehaviour
     public GameObject bullet;
     public Transform firePosition;
 
+    public GameObject muzzleFlash;
+    public GameObject bulletHole;
+
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -35,6 +38,24 @@ public class Player : MonoBehaviour
         //Checking left mouse button
         if (Input.GetMouseButtonDown(0))
         {
+
+            RaycastHit hit;
+
+            if (Physics.Raycast(myCameraHead.position, myCameraHead.forward, out hit, 100f))
+            {
+                //check distance between firing and object
+
+                if (Vector3.Distance(myCameraHead.position, hit.point) > 2f)
+                {
+                    firePosition.LookAt(hit.point);
+                }
+            }
+            else
+            {
+                firePosition.LookAt(myCameraHead.position + (myCameraHead.forward * 50f));
+            }
+
+            Instantiate(muzzleFlash, firePosition.position, firePosition.rotation, firePosition);
             Instantiate(bullet, firePosition.position, firePosition.rotation);
         }
     }

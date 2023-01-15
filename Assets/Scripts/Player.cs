@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    //speed
     public float speed = 12.5f;
+    public float crouchingSpeed = 8.5f;
 
     //gravity
     public Vector3 velocity;
@@ -24,16 +25,74 @@ public class Player : MonoBehaviour
 
     public GameObject muzzleFlash, bulletHole, waterLeak;
 
+    //jump
+    public float jumpHeight = 2f;
+    private bool readyToJump;
+    public Transform ground;
+    public LayerMask groundLayer;
+    public float groundDistance = 0.5f;
+
+    //crouching
+    private Vector3 crouchScale = new Vector3(1, 0.5f, 1);
+    private Vector3 bodyScale;
+    public Transform myBody;
+    private float initialControllerHeight;
+    private bool isCrouching = false;
+
     void Start()
     {
-
+        bodyScale = myBody.localScale;
+        initialControllerHeight = myController.height;
     }
 
     void Update()
     {
         PlayerMovement();
         MouseMovement();
+        Jump();
         Shoot();
+        Crouching();
+    }
+
+    private void Crouching()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+            StartCrouching();
+
+        if (Input.GetKeyUp(KeyCode.C))
+            StopCouching();
+
+    }
+
+    private void StartCrouching()
+    {
+        myBody.localScale = crouchScale;
+        myCameraHead.position -= new Vector3(0, 1f, 0);
+        myController.height /= 2; 
+        isCrouching = true;
+    }
+
+    private void StopCouching()
+    {
+        myBody.localScale = bodyScale;
+        myCameraHead.position += new Vector3(0, 1f, 0);
+
+        myController.height = initialControllerHeight;
+        isCrouching = false;
+    }
+
+    private void Jump()
+    {
+        //OverlapSphere - only when colliders are touching we will jump(prevent multiple jumps)
+        readyToJump = Physics.OverlapSphere(ground.position, groundDistance, groundLayer).Length > 0;
+
+        if (Input.GetButtonDown("Jump") && readyToJump)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y) * Time.deltaTime;
+        }
+
+        myController.Move(velocity);
+
     }
 
     private void Shoot()
@@ -98,7 +157,15 @@ public class Player : MonoBehaviour
 
         Vector3 movement = x * transform.right + z * transform.forward;
 
-        myController.Move(movement * speed * Time.deltaTime);
+        if (isCrouching)
+        {
+            movement = movement * crouchingSpeed * Time.deltaTime;
+        }
+        else
+        {
+            movement = movement * speed * Time.deltaTime;
+        }
+        myController.Move(movement);
 
         velocity.y += Physics.gravity.y * Mathf.Pow(Time.deltaTime, 2) * gravityModifier;
 

@@ -6,6 +6,8 @@ using UnityEngine;
 public class GunSystem : MonoBehaviour
 {
     public Transform myCameraHead;
+    private UICanvasController myUICanvas;
+
     public Transform firePosition;
     public GameObject bullet;
 
@@ -25,6 +27,8 @@ public class GunSystem : MonoBehaviour
     {
         totalBullets -= magazineSize;
         bulletsAvailable = magazineSize;
+
+        myUICanvas = FindObjectOfType<UICanvasController>();
     }
 
     // Update is called once per frame
@@ -32,6 +36,7 @@ public class GunSystem : MonoBehaviour
     {
         Shoot();
         GunManager();
+        UpdateAmmoText();
     }
 
     private void GunManager()
@@ -41,8 +46,6 @@ public class GunSystem : MonoBehaviour
             Reload();
         }
     }
-
-
 
     private void Shoot()
     {
@@ -125,5 +128,11 @@ public class GunSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(timeBetweenShots);
         readyToShoot = true;
+    }
+
+    private void UpdateAmmoText()
+    {
+        myUICanvas.ammoText.SetText(bulletsAvailable + "/" + magazineSize);
+        myUICanvas.totalAmmoText.SetText(totalBullets.ToString());
     }
 }

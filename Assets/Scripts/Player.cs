@@ -39,6 +39,9 @@ public class Player : MonoBehaviour
     private float initialControllerHeight;
     private bool isCrouching = false;
 
+    //animations
+    public Animator animator;
+
     void Start()
     {
         bodyScale = myBody.localScale;
@@ -165,7 +168,12 @@ public class Player : MonoBehaviour
         {
             movement = movement * speed * Time.deltaTime;
         }
+
+        //Debug.Log(movement.magnitude);
+        animator.SetFloat("PlayerSpeed", movement.magnitude);
+
         myController.Move(movement);
+
 
         velocity.y += Physics.gravity.y * Mathf.Pow(Time.deltaTime, 2) * gravityModifier;
 

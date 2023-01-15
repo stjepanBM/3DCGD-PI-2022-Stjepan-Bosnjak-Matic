@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 127455713}
   - component: {fileID: 127455714}
   - component: {fileID: 127455715}
+  - component: {fileID: 127455716}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -403,6 +404,27 @@ MonoBehaviour:
     m_Bits: 64
   groundDistance: 0.5
   myBody: {fileID: 1390807060}
+  animator: {fileID: 127455716}
+--- !u!95 &127455716
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127455712}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: faadb8e5253f3e645af05a5c63120ce6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &133841280
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +803,7 @@ GameObject:
   - component: {fileID: 439740187}
   - component: {fileID: 439740186}
   - component: {fileID: 439740185}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1272,7 +1294,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

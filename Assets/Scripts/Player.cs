@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     //speed
     public float speed = 12.5f;
     public float crouchingSpeed = 8.5f;
+    public float runSpeed = 18.5f;
 
     //gravity
     public Vector3 velocity;
@@ -42,6 +43,12 @@ public class Player : MonoBehaviour
     //animations
     public Animator animator;
 
+    //sliding
+    public bool isRunning = false, startSliderTimer;
+    public float currentSlideTimer, maxSlideTime = 2f;
+    public float slideSpeed = 30f;
+
+
     void Start()
     {
         bodyScale = myBody.localScale;
@@ -55,6 +62,7 @@ public class Player : MonoBehaviour
         Jump();
         Shoot();
         Crouching();
+        SlideCounter();
     }
 
     private void Crouching()
@@ -62,7 +70,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
             StartCrouching();
 
-        if (Input.GetKeyUp(KeyCode.C))
+        if (Input.GetKeyUp(KeyCode.C) || currentSlideTimer > maxSlideTime)
             StopCouching();
 
     }
@@ -71,12 +79,22 @@ public class Player : MonoBehaviour
     {
         myBody.localScale = crouchScale;
         myCameraHead.position -= new Vector3(0, 1f, 0);
-        myController.height /= 2; 
+        myController.height /= 2;
         isCrouching = true;
+
+        if (isRunning)
+        {
+            velocity = Vector3.ProjectOnPlane(myCameraHead.transform.forward, Vector3.up).normalized * slideSpeed * Time.deltaTime;
+            startSliderTimer = true;
+        }
     }
 
     private void StopCouching()
     {
+        currentSlideTimer = 0f;
+        velocity = new Vector3(0f, 0f, 0f);
+        startSliderTimer = false;
+
         myBody.localScale = bodyScale;
         myCameraHead.position += new Vector3(0, 1f, 0);
 
@@ -160,19 +178,25 @@ public class Player : MonoBehaviour
 
         Vector3 movement = x * transform.right + z * transform.forward;
 
-        if (isCrouching)
+        if (Input.GetKey(KeyCode.LeftShift) && !isCrouching)
+        {
+            movement = movement * runSpeed * Time.deltaTime;
+            isRunning = true;
+        }
+        else if (isCrouching)
         {
             movement = movement * crouchingSpeed * Time.deltaTime;
         }
         else
         {
             movement = movement * speed * Time.deltaTime;
+            isRunning = false;
         }
 
-        //Debug.Log(movement.magnitude);
         animator.SetFloat("PlayerSpeed", movement.magnitude);
 
         myController.Move(movement);
+        Debug.Log(movement.magnitude);
 
 
         velocity.y += Physics.gravity.y * Mathf.Pow(Time.deltaTime, 2) * gravityModifier;
@@ -184,4 +208,13 @@ public class Player : MonoBehaviour
 
         myController.Move(velocity);
     }
+
+    private void SlideCounter()
+    {
+        if (startSliderTimer)
+        {
+            currentSlideTimer += Time.deltaTime; 
+        }
+    }
+
 }

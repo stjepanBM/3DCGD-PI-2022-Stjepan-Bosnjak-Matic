@@ -385,8 +385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2078294b531bd8848afe47293c78d6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  crouchingSpeed: 8.5
+  speed: 20
+  crouchingSpeed: 8
+  runSpeed: 45
   velocity: {x: 0, y: 0, z: 0}
   gravityModifier: 10
   myController: {fileID: 127455714}
@@ -405,6 +406,11 @@ MonoBehaviour:
   groundDistance: 0.5
   myBody: {fileID: 1390807060}
   animator: {fileID: 127455716}
+  isRunning: 0
+  startSliderTimer: 0
+  currentSlideTimer: 0
+  maxSlideTime: 2
+  slideSpeed: 5
 --- !u!95 &127455716
 Animator:
   serializedVersion: 4
@@ -941,7 +947,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488073997}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.831, y: -0.515, z: 1.638}
+  m_LocalPosition: {x: 0.831, y: -0.515, z: 1.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1653,7 +1659,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337964572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.845, y: -0.489, z: 0.953}
+  m_LocalPosition: {x: 0.845, y: -0.489, z: 0.782}
   m_LocalScale: {x: 0.17780493, y: 0.23795071, z: 0.93128973}
   m_ConstrainProportionsScale: 0
   m_Children: []

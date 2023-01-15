@@ -21,11 +21,6 @@ public class Player : MonoBehaviour
     public Transform myCameraHead;
     private float cameraVerticalRotation;
 
-    public GameObject bullet;
-    public Transform firePosition;
-
-    public GameObject muzzleFlash, bulletHole, waterLeak;
-
     //jump
     public float jumpHeight = 2f;
     private bool readyToJump;
@@ -60,7 +55,6 @@ public class Player : MonoBehaviour
         PlayerMovement();
         MouseMovement();
         Jump();
-        Shoot();
         Crouching();
         SlideCounter();
     }
@@ -116,43 +110,6 @@ public class Player : MonoBehaviour
 
     }
 
-    private void Shoot()
-    {
-        //Checking left mouse button
-        if (Input.GetMouseButtonDown(0))
-        {
-
-            RaycastHit hit;
-
-            if (Physics.Raycast(myCameraHead.position, myCameraHead.forward, out hit, 100f))
-            {
-                //check distance between firing and object
-
-                if (Vector3.Distance(myCameraHead.position, hit.point) > 2f)
-                {
-                    firePosition.LookAt(hit.point);
-                    if (hit.collider.tag == "Shootable")
-                        Instantiate(bulletHole, hit.point, Quaternion.LookRotation(hit.normal));
-
-                    if (hit.collider.CompareTag("WaterLeak"))
-                        Instantiate(waterLeak, hit.point, Quaternion.LookRotation(hit.normal));
-
-                }
-                if (hit.collider.CompareTag("Enemy"))
-                {
-                    Destroy(hit.collider.gameObject);
-                }
-            }
-            else
-            {
-                firePosition.LookAt(myCameraHead.position + (myCameraHead.forward * 50f));
-            }
-
-            Instantiate(muzzleFlash, firePosition.position, firePosition.rotation, firePosition);
-            Instantiate(bullet, firePosition.position, firePosition.rotation);
-        }
-    }
-
     private void MouseMovement()
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensitivity * Time.deltaTime;
@@ -196,8 +153,6 @@ public class Player : MonoBehaviour
         animator.SetFloat("PlayerSpeed", movement.magnitude);
 
         myController.Move(movement);
-        Debug.Log(movement.magnitude);
-
 
         velocity.y += Physics.gravity.y * Mathf.Pow(Time.deltaTime, 2) * gravityModifier;
 
@@ -213,7 +168,7 @@ public class Player : MonoBehaviour
     {
         if (startSliderTimer)
         {
-            currentSlideTimer += Time.deltaTime; 
+            currentSlideTimer += Time.deltaTime;
         }
     }
 

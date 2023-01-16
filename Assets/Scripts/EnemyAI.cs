@@ -8,22 +8,40 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     NavMeshAgent myAgent;
-    public LayerMask whatIsGround;
+    public LayerMask whatIsGround, whatIsPlayer;
+    public Transform player;
 
+    //Guarding some field
     public Vector3 destinationPoint;
     bool destinationSet;
     public float destinationRange;
 
+    //Chasing player inside of range
+    public float chaseRange;
+    bool playerInChaseRange;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>().transform;
         myAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Guarding();
+        playerInChaseRange = Physics.CheckSphere(transform.position, chaseRange, whatIsPlayer);
+
+        if (!playerInChaseRange)
+            Guarding();
+        else if(playerInChaseRange)
+            ChasePlayer();
+
+    }
+
+    private void ChasePlayer()
+    {
+        myAgent.SetDestination(player.position);
     }
 
     private void Guarding()
@@ -59,5 +77,11 @@ public class EnemyAI : MonoBehaviour
         {
             destinationSet = true;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
     }
 }

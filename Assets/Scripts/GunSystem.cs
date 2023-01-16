@@ -22,11 +22,19 @@ public class GunSystem : MonoBehaviour
     public float reloadTime;
     private bool reloading = false;
 
+    //aiming
+    public Transform aimPosition;
+    private float aimSpeed = 2f;
+    private Vector3 gunStartPosition;
+    public float zoomAmount;
+
     // Start is called before the first frame update
     void Start()
     {
         totalBullets -= magazineSize;
         bulletsAvailable = magazineSize;
+
+        gunStartPosition = transform.localPosition;
 
         myUICanvas = FindObjectOfType<UICanvasController>();
     }
@@ -45,6 +53,19 @@ public class GunSystem : MonoBehaviour
         {
             Reload();
         }
+
+        if (Input.GetMouseButton(1))
+            transform.position = Vector3.MoveTowards(transform.position, aimPosition.position, aimSpeed * Time.deltaTime);
+        else
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, gunStartPosition, aimSpeed * Time.deltaTime);
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            FindObjectOfType<CameraMove>().ZoomIn(zoomAmount);
+        }
+
+        if (Input.GetMouseButtonUp(1))
+            FindObjectOfType<CameraMove>().ZoomOut();
     }
 
     private void Shoot()

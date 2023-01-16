@@ -9,7 +9,11 @@ public class EnemyAI : MonoBehaviour
 {
     NavMeshAgent myAgent;
     public LayerMask whatIsGround, whatIsPlayer;
+
     public Transform player;
+    Animator animator;
+
+    public Transform firePosition;
 
     //Guarding some field
     public Vector3 destinationPoint;
@@ -20,23 +24,64 @@ public class EnemyAI : MonoBehaviour
     public float chaseRange;
     bool playerInChaseRange;
 
-    // Start is called before the first frame update
+    //Enemy attacking
+    public float attackRange, attackTime;
+    private bool playerInAttackRange, readyToAttack = true;
+    public GameObject attackProjectile;
+
+    //Melee attack
+    public bool meleeAttacker;
+
+
     void Start()
     {
         player = FindObjectOfType<Player>().transform;
         myAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         playerInChaseRange = Physics.CheckSphere(transform.position, chaseRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInChaseRange)
+        if (!playerInChaseRange && !playerInAttackRange)
             Guarding();
-        else if(playerInChaseRange)
+        if (playerInChaseRange && !playerInAttackRange)
             ChasePlayer();
+        if (playerInChaseRange && playerInAttackRange)
+            AttackPlayer();
+    }
 
+    private void AttackPlayer()
+    {
+        myAgent.SetDestination(transform.position);
+        transform.LookAt(player);
+
+
+        if (readyToAttack && !meleeAttacker)
+        {
+            animator.SetTrigger("Attack");
+
+
+            firePosition.LookAt(player);
+            Instantiate(attackProjectile, firePosition.position, firePosition.rotation);
+
+            readyToAttack = false;
+            StartCoroutine(ResetAttack());
+        } else if(readyToAttack && meleeAttacker)
+        {
+            animator.SetTrigger("Attack");
+        }
+    }
+
+    public void MeleeDamage()
+    {
+        if (playerInAttackRange)
+        {
+            //Reduce player health
+        }
     }
 
     private void ChasePlayer()
@@ -83,5 +128,15 @@ public class EnemyAI : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, chaseRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+
+    IEnumerator ResetAttack()
+    {
+        yield return new WaitForSeconds(attackTime);
+        readyToAttack = true;
+    }
+
 }

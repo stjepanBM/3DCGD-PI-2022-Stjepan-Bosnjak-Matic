@@ -11,7 +11,7 @@ public class GunSystem : MonoBehaviour
     public Transform firePosition;
     public GameObject bullet;
 
-    public GameObject muzzleFlash, bulletHole, waterLeak;
+    public GameObject muzzleFlash, bulletHole, waterLeak, bloodEffect;
 
     public bool canAutoFire;
     private bool shooting, readyToShoot = true;
@@ -27,6 +27,8 @@ public class GunSystem : MonoBehaviour
     private float aimSpeed = 2f;
     private Vector3 gunStartPosition;
     public float zoomAmount;
+
+    public int damageAmount = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -102,7 +104,8 @@ public class GunSystem : MonoBehaviour
                 }
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    Destroy(hit.collider.gameObject);
+                    hit.collider.GetComponent<EnemyHealthSystem>().TakeDamage(damageAmount);
+                    Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 }
             }
             else

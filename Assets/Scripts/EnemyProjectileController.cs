@@ -8,6 +8,7 @@ public class EnemyProjectileController : MonoBehaviour
 
     Rigidbody myRigidBody;
     public float upForce, forwardForce;
+    public int damageAmount = 3; 
 
     void Start()
     {
@@ -25,5 +26,13 @@ public class EnemyProjectileController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<PlayerHealthSystem>().TakeDamage(damageAmount);
+        }
     }
 }

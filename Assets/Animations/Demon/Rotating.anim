@@ -20,62 +20,44 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 3.556934, y: 4.5, z: -21}
+        value: {x: 0, y: 7.2, z: -64.5}
         inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 33.241684, y: 0, z: 0}
+        outSlope: {x: -53.892857, y: 0.64285755, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 0.6333333
-        value: {x: 24.61, y: 4.5, z: -21}
-        inSlope: {x: 33.241684, y: -0, z: -0}
-        outSlope: {x: -16.65714, y: 0, z: -4.6000013}
+        time: 0.93333334
+        value: {x: -50.3, y: 7.8, z: -64.5}
+        inSlope: {x: -53.892857, y: 0.64285755, z: -0}
+        outSlope: {x: 0, y: 0, z: 43.263157}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 0.98333335
-        value: {x: 18.78, y: 4.5, z: -22.61}
-        inSlope: {x: -16.65714, y: -0, z: -4.6000013}
-        outSlope: {x: -25.963636, y: 0, z: 0}
+        time: 1.5666667
+        value: {x: -50.3, y: 7.8, z: -37.1}
+        inSlope: {x: -0, y: -0, z: 43.263157}
+        outSlope: {x: 50.4, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 1.35
-        value: {x: 9.26, y: 4.5, z: -22.61}
-        inSlope: {x: -25.963636, y: -0, z: -0}
-        outSlope: {x: -10.369211, y: 0, z: 2.927274}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 1.9
-        value: {x: 3.556934, y: 4.5, z: -21}
-        inSlope: {x: -10.369211, y: -0, z: 2.927274}
-        outSlope: {x: -13.684633, y: 0, z: 16.594738}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 2.5333333
-        value: {x: -5.11, y: 4.5, z: -10.49}
-        inSlope: {x: -13.684633, y: -0, z: 16.594738}
-        outSlope: {x: 13.333743, y: 0, z: -16.16923}
+        time: 2.2333333
+        value: {x: -16.7, y: 7.8, z: -37.1}
+        inSlope: {x: 50.4, y: -0, z: -0}
+        outSlope: {x: 17.578947, y: -0.63157934, z: -28.842106}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 3.1833334
-        value: {x: 3.556934, y: 4.5, z: -21}
-        inSlope: {x: 13.333743, y: -0, z: -16.16923}
+        value: {x: 0, y: 7.2, z: -64.5}
+        inSlope: {x: 17.578947, y: -0.63157934, z: -28.842106}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
@@ -84,7 +66,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: cacoDemonBody
+    path: 
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -96,7 +78,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2450170227
+      path: 0
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -129,62 +111,44 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 3.556934
+        value: 0
         inSlope: 0
-        outSlope: 33.241684
+        outSlope: -53.892857
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.6333333
-        value: 24.61
-        inSlope: 33.241684
-        outSlope: -16.65714
+        time: 0.93333334
+        value: -50.3
+        inSlope: -53.892857
+        outSlope: 0
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.98333335
-        value: 18.78
-        inSlope: -16.65714
-        outSlope: -25.963636
+        time: 1.5666667
+        value: -50.3
+        inSlope: -0
+        outSlope: 50.4
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.35
-        value: 9.26
-        inSlope: -25.963636
-        outSlope: -10.369211
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.9
-        value: 3.556934
-        inSlope: -10.369211
-        outSlope: -13.684633
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 2.5333333
-        value: -5.11
-        inSlope: -13.684633
-        outSlope: 13.333743
+        time: 2.2333333
+        value: -16.7
+        inSlope: 50.4
+        outSlope: 17.578947
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 3.1833334
-        value: 3.556934
-        inSlope: 13.333743
+        value: 0
+        inSlope: 17.578947
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
@@ -194,7 +158,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: cacoDemonBody
+    path: 
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -202,16 +166,25 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 4.5
+        value: 7.2
         inSlope: 0
+        outSlope: 0.64285755
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.93333334
+        value: 7.8
+        inSlope: 0.64285755
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.6333333
-        value: 4.5
+        time: 1.5666667
+        value: 7.8
         inSlope: -0
         outSlope: 0
         tangentMode: 69
@@ -219,45 +192,18 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.98333335
-        value: 4.5
+        time: 2.2333333
+        value: 7.8
         inSlope: -0
-        outSlope: 0
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.35
-        value: 4.5
-        inSlope: -0
-        outSlope: 0
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.9
-        value: 4.5
-        inSlope: -0
-        outSlope: 0
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 2.5333333
-        value: 4.5
-        inSlope: -0
-        outSlope: 0
+        outSlope: -0.63157934
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 3.1833334
-        value: 4.5
-        inSlope: -0
+        value: 7.2
+        inSlope: -0.63157934
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
@@ -267,7 +213,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: cacoDemonBody
+    path: 
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -275,7 +221,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -21
+        value: -64.5
         inSlope: 0
         outSlope: 0
         tangentMode: 69
@@ -283,54 +229,36 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.6333333
-        value: -21
+        time: 0.93333334
+        value: -64.5
         inSlope: -0
-        outSlope: -4.6000013
+        outSlope: 43.263157
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.98333335
-        value: -22.61
-        inSlope: -4.6000013
+        time: 1.5666667
+        value: -37.1
+        inSlope: 43.263157
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.35
-        value: -22.61
+        time: 2.2333333
+        value: -37.1
         inSlope: -0
-        outSlope: 2.927274
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.9
-        value: -21
-        inSlope: 2.927274
-        outSlope: 16.594738
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 2.5333333
-        value: -10.49
-        inSlope: 16.594738
-        outSlope: -16.16923
+        outSlope: -28.842106
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 3.1833334
-        value: -21
-        inSlope: -16.16923
+        value: -64.5
+        inSlope: -28.842106
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
@@ -340,10 +268,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: cacoDemonBody
+    path: 
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves: []
-  m_HasGenericRootTransform: 0
+  m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events: []

@@ -16,12 +16,6 @@ public class PlayerHealthSystem : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(int amountOfDamage)
     {
         currentHealth -= amountOfDamage;
@@ -32,5 +26,16 @@ public class PlayerHealthSystem : MonoBehaviour
             gameObject.SetActive(false);
             FindObjectOfType<GameManager>().PlayerRespawn();
         }
+    }
+
+    public void HealPlayer(int healAmount)
+    {
+        currentHealth += healAmount;
+
+        if (currentHealth >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        healthBar.SetHealth(currentHealth);
     }
 }

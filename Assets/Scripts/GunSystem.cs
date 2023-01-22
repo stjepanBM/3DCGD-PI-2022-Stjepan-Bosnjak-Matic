@@ -7,6 +7,7 @@ public class GunSystem : MonoBehaviour
 {
     public Transform myCameraHead;
     private UICanvasController myUICanvas;
+    public Animator myAnimator;
 
     public Transform firePosition;
     public GameObject bullet;
@@ -29,6 +30,11 @@ public class GunSystem : MonoBehaviour
     public float zoomAmount;
 
     public int damageAmount = 2;
+    public string gunName;
+    string gunAnimationName;
+
+    public int pickupBulletAmount;
+
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +53,22 @@ public class GunSystem : MonoBehaviour
         Shoot();
         GunManager();
         UpdateAmmoText();
+        AnimationManager();
+    }
+
+    private void AnimationManager()
+    {
+        switch (gunName)
+        {
+            case "Pistol":
+                gunAnimationName = "PistolReload";
+                break;
+            //case "Rifle":
+                //gunAnimationName = "";
+                //break;
+            default:
+                break;
+        }
     }
 
     private void GunManager()
@@ -124,7 +146,21 @@ public class GunSystem : MonoBehaviour
         }
     }
 
+    public void AddAmmo()
+    {
+        totalBullets += pickupBulletAmount;
+        
+    }
+
     private void Reload()
+    {
+        myAnimator.SetTrigger(gunAnimationName);
+       
+        reloading = true;
+        StartCoroutine(ReloadCoroutine());
+    }
+
+    IEnumerator ReloadCoroutine()
     {
         int bulletsToAdd = magazineSize - bulletsAvailable;
 
@@ -138,14 +174,9 @@ public class GunSystem : MonoBehaviour
             bulletsAvailable += totalBullets;
             totalBullets = 0;
         }
-        reloading = true;
-        StartCoroutine(ReloadCoroutine());
-    }
-
-    IEnumerator ReloadCoroutine()
-    {
-        yield return new WaitForSeconds(reloadTime);
         reloading = false;
+        yield return new WaitForSeconds(reloadTime);
+        
     }
 
     IEnumerator ResetShot()

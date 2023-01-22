@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource backgroundMusic;
 
+    public AudioSource[] sfx;
+
     //before start
     private void Awake()
     {
@@ -15,9 +17,12 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    void Update()
+    public void PlaySFX(int sfxNumber)
     {
-        
+
+        //Stoping and playing it to not interact with anything while triggering
+        sfx[sfxNumber].Stop();
+        sfx[sfxNumber].Play();
     }
 
     public void StopBackgroundMusic()

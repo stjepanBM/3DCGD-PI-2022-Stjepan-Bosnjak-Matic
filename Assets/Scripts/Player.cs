@@ -103,11 +103,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && readyToJump)
         {
+            AudioManager.instance.PlaySFX(2);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y) * Time.deltaTime;
         }
 
         myController.Move(velocity);
-
     }
 
     private void MouseMovement()

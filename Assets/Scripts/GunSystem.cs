@@ -63,9 +63,9 @@ public class GunSystem : MonoBehaviour
             case "Pistol":
                 gunAnimationName = "PistolReload";
                 break;
-            //case "Rifle":
-                //gunAnimationName = "";
-                //break;
+            case "Rifle":
+                gunAnimationName = "RifleReload";
+                break;
             default:
                 break;
         }
@@ -155,6 +155,8 @@ public class GunSystem : MonoBehaviour
     private void Reload()
     {
         myAnimator.SetTrigger(gunAnimationName);
+
+        AudioManager.instance.PlaySFX(7);
        
         reloading = true;
         StartCoroutine(ReloadCoroutine());

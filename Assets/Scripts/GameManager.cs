@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     //Respawning
     //Scene manipulation
 
-    private float timeUntilPlayerDies = 3f; 
+    private float timeUntilPlayerDies = 3f;
 
    public void PlayerRespawn()
     {

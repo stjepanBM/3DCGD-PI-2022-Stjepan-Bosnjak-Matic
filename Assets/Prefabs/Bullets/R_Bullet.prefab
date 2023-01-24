@@ -114,8 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9adf84b2e71673b489c427a58f4b2d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
-  bulletLife: 2
+  speed: 200
+  bulletLife: 1.5
   myRigidBody: {fileID: -1273244511449470588}
 --- !u!82 &2818641236586622691
 AudioSource:

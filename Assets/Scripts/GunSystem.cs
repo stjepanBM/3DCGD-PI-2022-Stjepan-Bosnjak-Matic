@@ -50,6 +50,8 @@ public class GunSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //when in in game menu dont allow any action
+        if (PauseMenu.gameIsPaused) { return; }
         Shoot();
         GunManager();
         UpdateAmmoText();

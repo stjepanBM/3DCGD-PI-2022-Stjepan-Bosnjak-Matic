@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 200
-  bulletLife: 2
+  bulletLife: 1.5
   myRigidBody: {fileID: 8755931808337138267}
 --- !u!82 &1395919761570813627
 AudioSource:

@@ -12,12 +12,14 @@ public class CameraMove : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
 
         myCamera = GetComponent<Camera>();
 
         startFOV = myCamera.fieldOfView;
+        //Debug.Log();
         targetFOV = startFOV;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     //Called after all updates were called(after finishing movement)
@@ -27,6 +29,7 @@ public class CameraMove : MonoBehaviour
         transform.rotation = myPlayerHead.rotation;
 
         myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, targetFOV, FOVSpeed * Time.deltaTime);
+        //Debug.Log(myCamera.fieldOfView);
     }
 
     public void ZoomIn(float targetZoom)

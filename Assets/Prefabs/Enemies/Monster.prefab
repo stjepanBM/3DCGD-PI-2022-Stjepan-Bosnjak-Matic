@@ -72,13 +72,13 @@ MonoBehaviour:
   player: {fileID: 0}
   firePosition: {fileID: 0}
   destinationPoint: {x: 0, y: 0, z: 0}
-  destinationRange: 100
-  chaseRange: 15
+  destinationRange: 30
+  chaseRange: 30
   attackRange: 8
   attackTime: 0
   attackProjectile: {fileID: 0}
   meleeAttacker: 1
-  meleeDamageAmount: 2
+  meleeDamageAmount: 4
 --- !u!195 &4240021458449982494
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -98,7 +98,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.95
-  m_BaseOffset: 0
+  m_BaseOffset: 0.25
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!95 &4240021458449982495

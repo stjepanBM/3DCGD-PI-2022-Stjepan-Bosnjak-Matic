@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(int sfxNumber)
     {
 
-        //Stoping and playing it to not interact with anything while triggering
+        //Stoping and playing it to not interact with anything while triggered
         sfx[sfxNumber].Stop();
         sfx[sfxNumber].Play();
     }

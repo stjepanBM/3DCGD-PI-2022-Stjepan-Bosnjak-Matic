@@ -101,7 +101,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         Vector3 distanceToDestination = transform.position - destinationPoint;
-        if (distanceToDestination.magnitude < 2f)
+        if (distanceToDestination.magnitude < 3f)
         {
             destinationSet = false;
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraMove : MonoBehaviour
 {
@@ -12,12 +13,12 @@ public class CameraMove : MonoBehaviour
 
     void Start()
     {
-
         myCamera = GetComponent<Camera>();
 
         startFOV = myCamera.fieldOfView;
-        //Debug.Log();
+
         targetFOV = startFOV;
+        Debug.Log(targetFOV);
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -29,7 +30,6 @@ public class CameraMove : MonoBehaviour
         transform.rotation = myPlayerHead.rotation;
 
         myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, targetFOV, FOVSpeed * Time.deltaTime);
-        //Debug.Log(myCamera.fieldOfView);
     }
 
     public void ZoomIn(float targetZoom)
@@ -42,4 +42,8 @@ public class CameraMove : MonoBehaviour
         targetFOV = startFOV;
     }
 
+    public void OpenScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }

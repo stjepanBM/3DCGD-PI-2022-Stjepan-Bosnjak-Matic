@@ -38,13 +38,12 @@ public class WeaponsSwitchSystem : MonoBehaviour
         if (currentGunNumber >= allGuns.Count)
         {
             currentGunNumber = 0;
-            activeGun = allGuns[currentGunNumber];
-            activeGun.gameObject.SetActive(true);
+            //activeGun = allGuns[currentGunNumber];
+            //activeGun.gameObject.SetActive(true);
         }
-        else
-        {
-            activeGun = allGuns[currentGunNumber];
-            activeGun.gameObject.SetActive(true);
-        }
+
+        activeGun = allGuns[currentGunNumber];
+        activeGun.gameObject.SetActive(true);
+
     }
 }

@@ -33,25 +33,35 @@ public class EnemyAI : MonoBehaviour
     public bool meleeAttacker;
     public int meleeDamageAmount = 2;
 
+    public bool isCutscene = false;
+
     void Start()
     {
-        player = FindObjectOfType<Player>().transform;
-        myAgent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        if (!isCutscene)
+        {
+
+            player = FindObjectOfType<Player>().transform;
+            myAgent = GetComponent<NavMeshAgent>();
+            animator = GetComponent<Animator>();
+        }
     }
 
 
     void Update()
     {
-        playerInChaseRange = Physics.CheckSphere(transform.position, chaseRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        if (!isCutscene)
+        {
 
-        if (!playerInChaseRange && !playerInAttackRange)
-            Guarding();
-        if (playerInChaseRange && !playerInAttackRange)
-            ChasePlayer();
-        if (playerInChaseRange && playerInAttackRange)
-            AttackPlayer();
+            playerInChaseRange = Physics.CheckSphere(transform.position, chaseRange, whatIsPlayer);
+            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+
+            if (!playerInChaseRange && !playerInAttackRange)
+                Guarding();
+            if (playerInChaseRange && !playerInAttackRange)
+                ChasePlayer();
+            if (playerInChaseRange && playerInAttackRange)
+                AttackPlayer();
+        }
     }
 
     private void AttackPlayer()
@@ -70,7 +80,8 @@ public class EnemyAI : MonoBehaviour
 
             readyToAttack = false;
             StartCoroutine(ResetAttack());
-        } else if(readyToAttack && meleeAttacker)
+        }
+        else if (readyToAttack && meleeAttacker)
         {
             animator.SetTrigger("Attack");
         }

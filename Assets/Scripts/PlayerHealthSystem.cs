@@ -6,6 +6,7 @@ public class PlayerHealthSystem : MonoBehaviour
 {
     public int maxHealth;
     public int currentHealth;
+    private int playerLife = 1;
 
     UICanvasController healthBar;
 
@@ -27,7 +28,8 @@ public class PlayerHealthSystem : MonoBehaviour
             gameObject.SetActive(false);
             AudioManager.instance.StopBackgroundMusic();
             AudioManager.instance.PlaySFX(3);
-            FindObjectOfType<GameManager>().PlayerRespawn();
+            playerLife--;
+            FindObjectOfType<GameManager>().PlayerRespawn(playerLife);
         }
     }
 

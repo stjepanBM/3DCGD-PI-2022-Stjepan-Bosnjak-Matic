@@ -25,7 +25,7 @@ public class GunSystem : MonoBehaviour
 
     //aiming
     public Transform aimPosition;
-    private float aimSpeed = 2f;
+    private float aimSpeed = 3f;
     private Vector3 gunStartPosition;
     public float zoomAmount;
 
@@ -91,7 +91,9 @@ public class GunSystem : MonoBehaviour
         }
 
         if (Input.GetMouseButtonUp(1))
+        {
             FindObjectOfType<CameraMove>().ZoomOut();
+        }
     }
 
     private void Shoot()

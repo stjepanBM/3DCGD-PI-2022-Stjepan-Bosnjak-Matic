@@ -10,11 +10,22 @@ public class GameManager : MonoBehaviour
 
     private float timeUntilPlayerDies = 3f;
 
-   public void PlayerRespawn()
+    public void PlayerRespawn(int playerLife)
     {
-        StartCoroutine(PlayerRespawnCo());
+        if (playerLife <= 0)
+        {
+            GameToMainMenu();
+        }
+        else
+        {
+            StartCoroutine(PlayerRespawnCo());
+        }
     }
 
+    public void GameToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 
     IEnumerator PlayerRespawnCo()
     {

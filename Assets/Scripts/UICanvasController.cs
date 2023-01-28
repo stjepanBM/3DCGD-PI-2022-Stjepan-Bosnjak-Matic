@@ -11,8 +11,6 @@ public class UICanvasController : MonoBehaviour
 
     public Slider healthSlider;
 
-    public Dialogue dialogue;
-
     void Start()
     {
 

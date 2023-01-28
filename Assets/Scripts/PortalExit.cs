@@ -17,7 +17,15 @@ public class PortalExit : MonoBehaviour
     IEnumerator LevelExitDelay()
     {
         yield return new WaitForSecondsRealtime(1f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
         Time.timeScale = 1f;
     }
 }

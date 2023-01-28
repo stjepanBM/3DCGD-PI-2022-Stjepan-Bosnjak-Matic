@@ -9,7 +9,6 @@ public class EnemyHealthSystem : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     void Update()
@@ -23,6 +22,11 @@ public class EnemyHealthSystem : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            if (gameObject.name.Contains("Caco"))
+            {
+
+                FindObjectOfType<PlayerHealthSystem>().HealPlayer(5);
+            }
         }
     }
 }

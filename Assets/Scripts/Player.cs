@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
         //we need to invert values because of how unity works(our value is positive, so we are subtracting value to invert it)
         cameraVerticalRotation -= mouseY;
         //Mathf.Clamp - Keeps the value between a certain min and max
-        cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -90f, 90f);
+        cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -88f, 90f);
 
         transform.Rotate(Vector3.up * mouseX);
         //uses vector3 and converts it to rotation

@@ -6,7 +6,7 @@ public class PlayerHealthSystem : MonoBehaviour
 {
     public int maxHealth;
     public int currentHealth;
-    private int playerLife = 1;
+    private int playerLife = 3;
 
     UICanvasController healthBar;
 

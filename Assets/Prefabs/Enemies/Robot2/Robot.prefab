@@ -13512,6 +13512,7 @@ MonoBehaviour:
   attackProjectile: {fileID: 7285359864595865370, guid: 25f77773beb218b4eb20ae29989bbf43, type: 3}
   meleeAttacker: 0
   meleeDamageAmount: 2
+  isCutscene: 0
 --- !u!95 &7966765986244135652
 Animator:
   serializedVersion: 4
@@ -13543,8 +13544,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
-  m_Center: {x: 0, y: 3, z: 0}
+  m_Radius: 2.8473547
+  m_Center: {x: -0.15264797, y: 3, z: 0.000000002377065}
 --- !u!114 &7966765986244135654
 MonoBehaviour:
   m_ObjectHideFlags: 0
